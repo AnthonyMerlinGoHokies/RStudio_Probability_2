@@ -1,0 +1,157 @@
+---
+output: pdf_document
+geometry: margin=1.5cm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# In-Class Exercise #3: Chapter 2 Practice
+
+In-Class Exercise \#3 focuses on various concepts from Chapter 2. In-Class Exercises are **graded as Complete or Incomplete**. To receive a **complete grade, you MUST ANSWER EVERY QUESTION to the best of your ability**. For instance, if you **do not answer ONE QUESTION, you will receive an incomplete** on this assignment. The purpose of this grading scale is to ensure you are attempting every problem and working to learn the material. 
+
+# How Much Work Do I Need to Show? 
+
+In-Class Exercises are an opportunity to practice course material and beginning preparing you for the exams. You need to show enough work, so that **anyone can look at your In-Class Exercise and understand how you got your answer**.
+
+--- 
+
+## Probability Question:
+
+**Question 1:** The Mars Company claims: “On average, our mix of colors for M&M'S CHOCOLATE CANDIES is: 24\% cyan blue, 20\% orange, 16\% green, 14\% bright yellow, 13\% red, 13\% brown. 
+
+Let's say we define the following events as: 
+
+$$ W = \{Red, Orange, Yellow\} \quad C = \{Blue, Brown\} \quad G = \{Green\} $$
+$$ M = \{Green, Blue\} \quad E = \{Red, Brown, Blue, Yellow\}$$
+
+* What is $P(W)$? 
+$~$ 0.47
+* What is $P(W \cup C)$?
+$~$ 0.84
+* What is $P(W \cap E)$? 
+$~$ 0.27 
+
+
+## Probability + Counting Question:
+
+**Question 2:** A computer system uses passwords that are six characters, and each character is one of the 26  letters (a–z) or 10 integers (0–9). Uppercase letters are not used. Let A denote the event that a password begins with a vowel (either a, e, i, o, or u) and let B denote the event that a password ends with an even number (either 0, 2, 4, 6, or 8). Suppose a hacker selects a password at random: **What is the probability of Event A, P(A)?**
+
+
+$~$ $$ P(A) \frac {numberofwaystogeteventA} {number of ways we can arrage 36 char} $$
+$~$ This equals = 5/36 or you could just do number of vowels over the total sum of letters and integers.
+
+## Conditional Probabiltiy, Independence, and Bayes Rules
+
+**Question 3:** Suppose that $P(T \cap Z) = 0.14$, $P(T) = 0,5$, and $P(Z)=0.2$. Determine $P(Z|T)$.
+
+$$ P(Z|T) = \frac {P(T\cap Z)}{P(T)} $$
+$$ =\frac{0.14}{0.5}$$
+$~$ = 0.28
+
+
+**Question 4:** Suppose that $P(A|B) = 0.40$, $P(A|B^C) = 0,2$, and $P(B)=0.8$. Determine $P(B|A)$.
+
+$~$ Use the total low of probability
+$$P(B|A) = \frac {P(A\cap B)}{P(A)} $$
+$$ = \frac{P(A|B)P(B)}{P(A|B)P(B)+P(A|B^c)P(B^c)}$$
+$~$ = 0.88 (repeating)
+
+
+**Question 5:** If $P(A|B) = 0.4$, $P(B) = 0.3$, and $P(A) = 0.5$, are the events A and B independent? 
+
+$$ P(A|B) does not equalP(A)$$
+$~$ Only A would be independent thus, (NO)
+
+**Question 6:** Software to detect fraud in consumer phone cards tracks the number of metropolitan areas where calls originate each day. It is found that 1\% of the legitimate users originate calls from two or more metropolitan areas in a single day. However, 30\% of fraudulent users originate calls from two or more metropolitan areas in a single day. The proportion of fraudulent users is 0.01\%. If the same user originates calls from two or more metropolitan areas in a single day, what is the probability that the user is fraudulent?
+
+$~$ Let: A = event or user call
+
+$~$ Let: F = event or fraud 
+
+$~$ Know: P(A|F^C) = .01   P(A|F) = .30   P(F) = 0.0001    P(F^C) = 1-P(F) = .9999
+
+
+$$P(F|A) = \frac{P(A|F)P(F)}{P(A)}$$ 
+$$= \frac{(.30)(.0001)}{(.30)(.0001) + (0.1)(.9999)}$$
+$~$= 0.0029
+
+## Random Variables
+
+**Problem Context:** A chemical engineer monitors a dyeing process for polyester yarn used in clothing by comparing a sample of the yarn against a standard color chart. Based on the sample’s results, he accepts or rejects the entire dyeing 
+batch. Each day, the process dyes five batches. Assume that the next day forms a random sample; that is, we run our dye process on five different batches of polyester yarn. We are interested in the number of rejected batches out of our five batches thus we let our  random variable X represent the number of rejected batches with the following probability distribution:
+
+$$ f_X(x) = \begin{cases}
+{5 \choose x}(0.05)^x (0.95)^{5-x} & x=\{1,2,3,4,5\} \\
+0 & \text{Otherwise} 
+\end{cases}$$
+
+
+**Question 7:** Is X a discrete or continuous random variable? Explain why?
+
+
+$~$ discrete due to countable range
+
+
+**Question 8:** Find the probability that zero batches are rejected.
+
+$$ P(X = 0) {5 \choose 0}(0.05)^0 (0.95)^{5-0}$$
+
+$~$ =0.773
+
+**Question 9:** Find the probability that at least one batch is rejected. 
+
+$$ P(x > 1) = 1 - P(x < 1) $$
+$$ = 1 - P (x=0)$$
+$$ 1.0 - 0.773 $$
+$~$ =0.226
+
+**Question 10:** Find the expected number of batches rejected. Write out the formula.  
+$$\sum_{i=1}^{5} { 5 \choose x}(0.05)^x (0.95)^{5-x}$$
+$$ 0(0.773) + (1)(.2036) + (2)(.0214) + (3)(.00112) + (4)(.000029) + (5)(.000003) $$
+
+$~$ = 0.25
+
+
+
+**Question 11:**Find the variance of the number of batches rejected. Write out the formula.
+
+$$ s^2 = \frac{\sum (x_i - \bar{x})^2}{n-1}$$
+
+
+$~$ 0.23 
+
+**Problem Context:** Aerospace engineers can model the lifetime of a pressure sensor using an exponential distribution with a rate of  0.05 sensor failures per week. The exponential probability distribution described is represented as:
+
+$$ f_Y(y) = \begin{cases}(0.05)e^{-0.05y} & y > 0 \\
+0 & \text{Otherwise}\end{cases} $$
+where our random variable Y represents the time-to-failure for a  sensor per week. Example: The $P(Y < 1)$ 
+represent the probability that a sensor fails within the week or the $P(Y < .5)$ represent the probability that a 
+sensor fails within the half a week.
+
+**Question 12:** Find the probability that a sensor fails within the two weeks. 
+
+$$P(Y<Z) = \int_{0}^{2} (0.05)e^{-0.05y}dy$$
+$$ = [\frac{(0.05) e^{-0.05y}}{-0.05}]_0^2 $$ 
+$~$ = 0.095
+
+
+**Question 13:** Find the probability that a sensor last longer than 5 days.
+
+$$ P(Y> \frac{5}{7}) = 1-P(Y< \frac{5}{7})$$
+$$1 - \int_{0}^{5/7} [0.05]e^{-0.05y} dy$$
+$$ 1 - 0.035$$
+$~$ = 0.965
+
+**Question 14;** Find the expected time to failure for a sensor. 
+$$ E[Y] = \int_{0}^{\infty} y(0.05)e^{-0.05y} dy$$
+$$[-ye^{-0.05y} - \frac{1}{0.05}e^{-0.05y}]_{0}^{\infty}$$
+$$= [0] - [-0e^{-0.05(0)} - \frac{1}{0.05}e^{-0.05(0)}]$$
+$$ = \frac {1}{0.05}$$
+$~$ E[Y] = 20
+
+**Question 15:** Find the variance for the time to failure for a sensor. *Note: $E(Y^2) = \frac{2}{0.05^2}$*
+$$V[y] = E[y^2]-(E(y))^2 $$
+$$ \frac{2}{0.05^{2}} - (20)^2=400$$
+$~$ \newline \newline \newline
